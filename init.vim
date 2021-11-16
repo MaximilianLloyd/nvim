@@ -10,6 +10,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-fugitive'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'preservim/nerdtree'
+Plug 'tpope/vim-commentary'
+
+Plug 'ryanoasis/vim-devicons'
 
 " Airline
 Plug 'vim-airline/vim-airline'
@@ -47,6 +50,7 @@ colorscheme ayu
 let mapleader = " "
 nnoremap <leader>vv :Vex<CR>
 nnoremap <leader><CR> :so ~/.config/nvim/init.vim<CR>
+noremap <silent> <C-S> :update<CR>
 
 nnoremap <leader>ff <cmd>Telescope git_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
