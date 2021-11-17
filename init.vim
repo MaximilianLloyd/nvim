@@ -34,6 +34,8 @@ let g:airline#extensions#tabline#enabled = 1
 set scrolloff=8
 set number
 set relativenumber
+set ic
+set nohls
 
 
 set tabstop=4 softtabstop=4
@@ -61,8 +63,14 @@ nnoremap <C-p> <cmd>Telescope git_files<cr>
 nnoremap <C-h> :cprev<cr>
 nnoremap <C-l> :cnext<cr>
 
+" move code
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
 " To fix on windows
 set t_ut=""
+set ttyfast
+set lazyredraw
 
 
 " Nerdtree
@@ -70,3 +78,6 @@ nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
+
+vnoremap <leader>p "_dP
+vnoremap <leader>y "+y
