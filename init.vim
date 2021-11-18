@@ -11,6 +11,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'preservim/nerdtree'
 Plug 'tpope/vim-commentary'
+Plug 'github/copilot.vim'
 
 Plug 'ryanoasis/vim-devicons'
 
@@ -64,9 +65,9 @@ nnoremap <C-h> :cprev<cr>
 nnoremap <C-l> :cnext<cr>
 
 " move code
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
 
+vnoremap K :m '<-2<CR>gv=gv
+vnoremap J :m '>+1<CR>gv=gv
 " To fix on windows
 set t_ut=""
 set ttyfast
