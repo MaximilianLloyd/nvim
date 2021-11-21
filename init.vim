@@ -12,6 +12,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'preservim/nerdtree'
 Plug 'tpope/vim-commentary'
 Plug 'github/copilot.vim'
+Plug 'hail2u/vim-css3-syntax'
 
 Plug 'ryanoasis/vim-devicons'
 
@@ -19,7 +20,9 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+" Themes
 Plug 'ayu-theme/ayu-vim'
+Plug 'gruvbox-community/gruvbox'
 
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -27,8 +30,7 @@ Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
-
-let g:airline_theme='ayu_dark'
+let g:airline_theme='base16_gruvbox_dark_hard'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
@@ -37,18 +39,33 @@ set number
 set relativenumber
 set ic
 set nohls
-
-
+set hidden
 set tabstop=4 softtabstop=4
 set shiftwidth=4
 set expandtab
 set smartindent
+set noerrorbells
+" Don't wrap lines
+set nowrap
+
+set noswapfile
+set nobackup
+set undodir=~/.vim/undodir
+set undofile
+
+set incsearch
 set noshowmode
+" Extra column on the left for linting
+" set signcolumn=yes
+
 
 " let g:material_style='deep ocean'
 set termguicolors
 let ayucolor="dark"
-colorscheme ayu
+
+set background=dark
+let g:gruvbox_contrast_dark='hard'
+colorscheme gruvbox
 
 let mapleader = " "
 nnoremap <leader>vv :Vex<CR>
@@ -60,19 +77,16 @@ nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
+" Grep
+nnoremap <leader>ps :lua require('telescope.builtin').grep_string({ search = vim.fn.input("🔍 Grep for > ")})<CR>
+
 nnoremap <C-p> <cmd>Telescope git_files<cr>
 nnoremap <C-h> :cprev<cr>
 nnoremap <C-l> :cnext<cr>
 
 " move code
-
 vnoremap K :m '<-2<CR>gv=gv
 vnoremap J :m '>+1<CR>gv=gv
-" To fix on windows
-set t_ut=""
-set ttyfast
-set lazyredraw
-
 
 " Nerdtree
 nnoremap <leader>n :NERDTreeFocus<CR>
@@ -80,5 +94,6 @@ nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 
-vnoremap <leader>p "_dP
+" not sure what this does
+" vnoremap <leader>p "_dP
 vnoremap <leader>y "+y
