@@ -34,6 +34,9 @@ let g:airline_theme='base16_gruvbox_dark_hard'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
+let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-eslint', 'coc-prettier']
+
+
 set scrolloff=8
 set number
 set relativenumber
@@ -56,7 +59,7 @@ set undofile
 set incsearch
 set noshowmode
 " Extra column on the left for linting
-" set signcolumn=yes
+set signcolumn=yes
 
 
 " let g:material_style='deep ocean'
@@ -97,3 +100,6 @@ nnoremap <C-f> :NERDTreeFind<CR>
 " not sure what this does
 " vnoremap <leader>p "_dP
 vnoremap <leader>y "+y
+
+" Prettier
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
