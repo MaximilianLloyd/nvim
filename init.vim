@@ -13,6 +13,7 @@ Plug 'preservim/nerdtree'
 Plug 'tpope/vim-commentary'
 Plug 'github/copilot.vim'
 Plug 'hail2u/vim-css3-syntax'
+Plug 'sheerun/vim-polyglot'
 
 Plug 'ryanoasis/vim-devicons'
 
@@ -27,6 +28,9 @@ Plug 'gruvbox-community/gruvbox'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+
+
+Plug 'styled-components/vim-styled-components'
 
 call plug#end()
 
@@ -68,7 +72,9 @@ let ayucolor="dark"
 
 set background=dark
 let g:gruvbox_contrast_dark='hard'
+let g:gruvbox_transparent_bg=1
 colorscheme gruvbox
+hi normal guibg=000000
 
 let mapleader = " "
 nnoremap <leader>vv :Vex<CR>
@@ -97,9 +103,16 @@ nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 
+" Coc 
+nnoremap cf :CocFix<CR>
+
 " not sure what this does
 " vnoremap <leader>p "_dP
 vnoremap <leader>y "+y
 
 " Prettier
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
+" Copilot remap
+imap <silent><script><expr> <C-a> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
