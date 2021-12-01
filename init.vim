@@ -14,6 +14,7 @@ Plug 'tpope/vim-commentary'
 Plug 'github/copilot.vim'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'sheerun/vim-polyglot'
+Plug 'rust-lang/rust.vim'
 
 Plug 'ryanoasis/vim-devicons'
 
@@ -24,7 +25,6 @@ Plug 'vim-airline/vim-airline-themes'
 " Themes
 Plug 'ayu-theme/ayu-vim'
 Plug 'gruvbox-community/gruvbox'
-
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -104,7 +104,9 @@ nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 
 " Coc 
+let g:coc_node_path = '/Users/maximilianlloyd/.nvm/versions/node/v16.13.0/bin/node'
 nnoremap cf :CocFix<CR>
+nnoremap gd :call CocActionAsync('jumpDefinition')<CR>
 
 " not sure what this does
 " vnoremap <leader>p "_dP
@@ -116,3 +118,4 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFile
 " Copilot remap
 imap <silent><script><expr> <C-a> copilot#Accept("\<CR>")
 let g:copilot_no_tab_map = v:true
+
