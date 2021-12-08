@@ -12,13 +12,13 @@ Plug 'tpope/vim-fugitive'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'preservim/nerdtree'
 Plug 'tpope/vim-commentary'
-Plug 'github/copilot.vim'
-Plug 'hail2u/vim-css3-syntax'
+Plug 'github/copilot.vim' 
 Plug 'sheerun/vim-polyglot'
 Plug 'rust-lang/rust.vim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-
 Plug 'ryanoasis/vim-devicons'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'preservim/vimux'
 
 " Airline
 Plug 'vim-airline/vim-airline'
@@ -37,7 +37,7 @@ Plug 'styled-components/vim-styled-components'
 call plug#end()
 
 " Airline
-let g:airline_theme='ayu'
+let g:airline_theme='gruvbox'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
@@ -79,12 +79,14 @@ let ayucolor="dark"
 set background=dark
 let g:gruvbox_contrast_dark='hard'
 let g:gruvbox_transparent_bg=1
-colorscheme ayu
+colorscheme gruvbox
 " Transparency
 hi normal guibg=000000
 highlight clear SignColumn
+hi LineNrAbove guifg=#CCCCCC ctermfg=white
+hi LineNrBelow guifg=#CCCCCC ctermfg=white
 
-let mapleader = " "
+let mapleader = " " 
 nnoremap <leader>vv :Vex<CR>
 nnoremap <leader><CR> :so ~/.config/nvim/init.vim<CR>
 noremap <silent> <C-S> :update<CR>
@@ -101,6 +103,7 @@ require('telescope').setup{
       file_previewer = require('telescope.previewers').vim_buffer_cat.new,
       grep_previewer = require('telescope.previewers').vim_buffer_vimgrep.new,
       qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
+      file_ignore_patterns = {'node_modules/'},
 
       mappings = {
         i = {
@@ -121,15 +124,18 @@ require('telescope').setup{
 require('telescope').load_extension('fzy_native')
 EOF
 
+" Vimux
+map <leader>vp :VimuxPromptCommand<CR>
 
+" Misc remaps
 " Window navigation
-nnoremap <leader>h <C-w>h
-nnoremap <leader>j <C-w>j
-nnoremap <leader>k <C-w>k
-nnoremap <leader>l <C-w>l
+noremap <C-h> :TmuxNavigateLeft<cr>
+noremap <C-j> :TmuxNavigateDown<cr>
+noremap <C-k> :TmuxNavigateUp<cr>
+noremap <C-l> :TmuxNavigateRight<cr>
 
-nnoremap <leader>ff <cmd>Telescope find_files<CR>
-nnoremap <leader>fg <cmd>Telescope live_grep<CR>
+nnoremap <leader>ff <cmd>Teleuscope find_files<CR>
+nnoremap <leader>fg <cmd>Tele live_grep<CR>
 nnoremap <leader>fb <cmd>Telescope buffers<CR>
 nnoremap <leader>fh <cmd>Telescope help_tags<CR>
 nnoremap <leader>fc <cmd>Telescope git_commits<CR>
@@ -141,8 +147,8 @@ nnoremap <leader>gb <cmd>Telescope git_branches<CR>
 nnoremap <leader>ps :lua require('telescope.builtin').grep_string({ search = vim.fn.input("🔍 Grep for > ")})<CR>
 
 nnoremap <C-p> <cmd>Telescope git_files<cr>
-nnoremap <C-h> :cprev<CR>
-nnoremap <C-l> :cnext<CR>
+" nnoremap <C-h> :cprev<CR>
+" nnoremap <C-l> :cnext<CR>
 nnoremap <C-o> :copen<CR>
 nnoremap <C-x> :cclose<CR>
 
@@ -159,10 +165,38 @@ nnoremap <C-f> :NERDTreeFind<CR>
 
 " Coc 
 let g:coc_node_path = '/Users/maximilianlloyd/.nvm/versions/node/v16.13.0/bin/node'
+set updatetime=250
 nnoremap cf :CocFix<CR>
 nnoremap gd :call CocActionAsync('jumpDefinition')<CR>
 nnoremap cl :CocList<CR>
 nnoremap co :CocOutline<CR>
+nmap <leader>qf  <Plug>(coc-fix-current)
+nmap rn <Plug>(coc-rename)
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " not sure what this does
 " vnoremap <leader>p "_dP
