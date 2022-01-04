@@ -1,12 +1,9 @@
 call plug#begin('~/.config/nvim/plugged')
-
-Plug 'marko-cerovac/material.nvim'
+Plug 'marko-cerovac/material.nvim' 
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'yuezk/vim-js'
-Plug 'maxmellon/vim-jsx-pretty'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-fugitive'
 Plug 'kyazdani42/nvim-web-devicons'
@@ -15,10 +12,7 @@ Plug 'tpope/vim-commentary'
 Plug 'github/copilot.vim' 
 Plug 'sheerun/vim-polyglot'
 Plug 'rust-lang/rust.vim'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'ryanoasis/vim-devicons'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'preservim/vimux'
 
 " Airline
 Plug 'vim-airline/vim-airline'
@@ -27,12 +21,6 @@ Plug 'vim-airline/vim-airline-themes'
 " Themes
 Plug 'ayu-theme/ayu-vim'
 Plug 'gruvbox-community/gruvbox'
-
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-
-
-Plug 'styled-components/vim-styled-components'
 
 call plug#end()
 
@@ -46,7 +34,8 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-eslint', 'coc-prettier']
 
-
+set timeoutlen=1000
+set ttimeoutlen=50
 set scrolloff=8
 set number
 set relativenumber
@@ -59,7 +48,7 @@ set expandtab
 set smartindent
 set noerrorbells
 " Don't wrap lines
-set nowrap
+" set nowrap
 
 set noswapfile
 set nobackup
@@ -74,12 +63,12 @@ set signcolumn=yes
 
 " let g:material_style='deep ocean'
 set termguicolors
-let ayucolor="dark"
 
-set background=dark
+" set background=dark
 let g:gruvbox_contrast_dark='hard'
 let g:gruvbox_transparent_bg=1
 colorscheme gruvbox
+
 " Transparency
 hi normal guibg=000000
 highlight clear SignColumn
@@ -90,12 +79,15 @@ let mapleader = " "
 nnoremap <leader>vv :Vex<CR>
 nnoremap <leader><CR> :so ~/.config/nvim/init.vim<CR>
 noremap <silent> <C-S> :update<CR>
+inoremap <silent> <C-S> <ESC> :update<CR>
 
 " Telescope
 lua << EOF
 local actions = require('telescope.actions')
+
 require('telescope').setup{
   defaults = {
+      layout_strategy = "vertical",
       file_sorter = require('telescope.sorters').get_fzy_sorter,
       prompt_prefix = ' >',
       color_devicons = true,
@@ -103,7 +95,7 @@ require('telescope').setup{
       file_previewer = require('telescope.previewers').vim_buffer_cat.new,
       grep_previewer = require('telescope.previewers').vim_buffer_vimgrep.new,
       qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
-      file_ignore_patterns = {'node_modules/'},
+      file_ignore_patterns = {'node_modules/', 'package-lock.json', 'yarn.lock'},
 
       mappings = {
         i = {
@@ -111,8 +103,6 @@ require('telescope').setup{
             ["<C-q>"] = actions.send_to_qflist,
         },
     },
-  },
-  pickers = {
   },
   extensions = {
     fzy_native = { 
@@ -124,22 +114,11 @@ require('telescope').setup{
 require('telescope').load_extension('fzy_native')
 EOF
 
-" Vimux
-map <leader>vp :VimuxPromptCommand<CR>
-
-" Misc remaps
-" Window navigation
-noremap <C-h> :TmuxNavigateLeft<cr>
-noremap <C-j> :TmuxNavigateDown<cr>
-noremap <C-k> :TmuxNavigateUp<cr>
-noremap <C-l> :TmuxNavigateRight<cr>
-
-nnoremap <leader>ff <cmd>Teleuscope find_files<CR>
+nnoremap <leader>ff <cmd>Telescope find_files<CR>
 nnoremap <leader>fg <cmd>Tele live_grep<CR>
 nnoremap <leader>fb <cmd>Telescope buffers<CR>
 nnoremap <leader>fh <cmd>Telescope help_tags<CR>
 nnoremap <leader>fc <cmd>Telescope git_commits<CR>
-nnoremap <leader>fts <cmd>Telescope treesitter<CR>
 nnoremap <leader>gb <cmd>Telescope git_branches<CR>
 
 " Grep
@@ -147,8 +126,8 @@ nnoremap <leader>gb <cmd>Telescope git_branches<CR>
 nnoremap <leader>ps :lua require('telescope.builtin').grep_string({ search = vim.fn.input("🔍 Grep for > ")})<CR>
 
 nnoremap <C-p> <cmd>Telescope git_files<cr>
-" nnoremap <C-h> :cprev<CR>
-" nnoremap <C-l> :cnext<CR>
+nnoremap <C-h> :cprev<CR>
+nnoremap <C-l> :cnext<CR>
 nnoremap <C-o> :copen<CR>
 nnoremap <C-x> :cclose<CR>
 
@@ -158,20 +137,24 @@ vnoremap J :m '>+1<CR>gv=gv
 
 " Nerdtree
 let NERDTreeShowBookmarks=1
-nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 
 " Coc 
 let g:coc_node_path = '/Users/maximilianlloyd/.nvm/versions/node/v16.13.0/bin/node'
-set updatetime=250
+set updatetime=300
+set nobackup
+set nowritebackup
+set shortmess+=c
+
 nnoremap cf :CocFix<CR>
 nnoremap gd :call CocActionAsync('jumpDefinition')<CR>
 nnoremap cl :CocList<CR>
 nnoremap co :CocOutline<CR>
 nmap <leader>qf  <Plug>(coc-fix-current)
 nmap rn <Plug>(coc-rename)
+
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
