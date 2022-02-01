@@ -1,0 +1,45 @@
+local actions = require('telescope.actions')
+local fb_actions = require "telescope".extensions.file_browser.actions
+
+require('telescope').setup{
+  defaults = {
+      color_devicons = true,
+      prompt_prefix = ' >',
+      -- layout_strategy = "vertical",
+      file_sorter = require('telescope.sorters').get_fzy_sorter,
+
+      file_previewer = require('telescope.previewers').vim_buffer_cat.new,
+      grep_previewer = require('telescope.previewers').vim_buffer_vimgrep.new,
+      qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
+      file_ignore_patterns = {'node_modules/', 'package-lock.json', 'yarn.lock'},
+
+      mappings = {
+        i = {
+            ["<esc>"] = actions.close,
+            ["<C-q>"] = actions.send_to_qflist,
+        },
+    },
+  },
+  extensions = {
+    fzy_native = { 
+        override_generic_sorter = false,
+        override_file_sorter = true
+    },
+    file_browser = {
+        theme = "ivy",
+        mappings = {
+            ["i"] = {
+                ["<esc>"] = actions.close,
+                ["<C-c>"] = fb_actions.create,
+                ["<C-y>"] = fb_actions.copy,
+                ["<C-r>"] = fb_actions.rename,
+                ["<C-d>"] = fb_actions.remove,
+            },
+        },
+    },
+  },
+}
+
+
+require('telescope').load_extension('fzy_native')
+require('telescope').load_extension('file_browser')
