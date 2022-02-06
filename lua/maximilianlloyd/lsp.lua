@@ -9,10 +9,8 @@ luasnip.filetype_extend("javascript", { "html" })
 luasnip.filetype_extend("typescript", { "typescriptreact" })
 luasnip.filetype_extend("typescriptreact", { "typescriptreact" })
 
--- 
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
--- Setup nvim-cmp.
 local cmp = require("cmp")
 local source_mapping = {
 	buffer = "[Buffer]",
@@ -35,7 +33,6 @@ cmp.setup {
       ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
       ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
       ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-      -- ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
       ['<C-e>'] = cmp.mapping({
         i = cmp.mapping.abort(),
         c = cmp.mapping.close(),
@@ -83,65 +80,68 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-
-  -- Diagnostics
   buf_set_keymap('n', '<leader>dh', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', '<leader>dl', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-
   buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  -- buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_set_keymap('n', '<space>ca', '<cmd>Telescope lsp_code_actions<CR>', opts)
-  buf_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+  buf_set_keymap('n', '<leader>ca', '<cmd>Telescope lsp_code_actions<CR>', opts)
+  buf_set_keymap('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
 end
 
 
+local lsp_installer_servers = require('nvim-lsp-installer.servers')
 
-local function config(_config)
-	return vim.tbl_deep_extend("force", {
-		capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-        on_attach = on_attach,
-	}, _config or {})
+local servers = {
+    "jsonls",
+    "eslint",
+    "angularls",
+    "vimls",
+    "sumneko_lua",
+    "tsserver",
+    "gopls",
+}
+
+-- Loop through the servers listed above.
+for _, server_name in pairs(servers) do
+    local server_available, server = lsp_installer_servers.get_server(server_name)
+    if server_available then
+        server:on_ready(function ()
+            local opts = {
+                settings = {
+                    on_attach = on_attach,
+                    capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+                }
+            }
+
+            if server_name == "sumneko_lua" then
+                opts = {
+                    settings = {
+                        Lua = {
+                            diagnostics = {
+                                globals = {'vim'},
+                            },
+                            workspace = {
+                                library = vim.api.nvim_get_runtime_file("", true),
+                            },
+                            telemetry = {
+                                enable = false,
+                            },
+                        },
+                        on_attach = on_attach,
+                        capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+                    },
+                }
+            end
+
+            server:setup(opts)
+        end)
+        if not server:is_installed() then
+            -- Queue the server to be installed.
+            server:install()
+        end
+    end
 end
-
-local lspconfig = require("lspconfig")
-
-lspconfig.tsserver.setup(config())
-lspconfig.ccls.setup(config())
-lspconfig.gopls.setup {
-    cmd = {"gopls", "serve"},
-    settings = {
-      gopls = {
-        analyses = {
-          unusedparams = true,
-        },
-        staticcheck = true,
-      },
-    },
-    on_attach = on_attach,
-}
-
-lspconfig.jsonls.setup(config())
-lspconfig.eslint.setup(config())
-lspconfig.angularls.setup(config())
-lspconfig.vimls.setup(config())
-lspconfig.sumneko_lua.setup{
-    settings = {
-    Lua = {
-      diagnostics = {
-        globals = {'vim'},
-      },
-      workspace = {
-        library = vim.api.nvim_get_runtime_file("", true),
-      },
-      telemetry = {
-        enable = false,
-      },
-    },
-    on_attach = on_attach
-  },
-}
 
 local opts = {
 	highlight_hovered_item = true,

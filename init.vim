@@ -3,6 +3,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'nvim-lua/plenary.nvim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'akinsho/bufferline.nvim'
+Plug 'ggandor/lightspeed.nvim'
 
 " Session
 " Plug 'rmagatti/auto-session'
@@ -16,7 +17,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 
-"
 Plug 'nvim-lualine/lualine.nvim'
 
 Plug 'kyazdani42/nvim-web-devicons'
@@ -31,6 +31,7 @@ Plug 'fatih/vim-go'
 
 " LSP
 Plug 'neovim/nvim-lspconfig'
+Plug 'williamboman/nvim-lsp-installer'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-nvim-lua'
 Plug 'hrsh7th/nvim-cmp'
@@ -51,13 +52,9 @@ Plug 'ayu-theme/ayu-vim'
 Plug 'gruvbox-community/gruvbox'
 Plug 'marko-cerovac/material.nvim' 
 
-
 " Dashboard
 Plug 'glepnir/dashboard-nvim'
-
 Plug 'folke/which-key.nvim'
-
-
 call plug#end()
 
 set timeoutlen=500
@@ -113,6 +110,13 @@ nnoremap <leader>fh <cmd>Telescope help_tags<CR>
 nnoremap <leader>fb <cmd>Telescope file_browser<CR>
 nnoremap <leader>b <cmd>Telescope buffers<CR>
 
+
+" Bufferline
+nnoremap bb <cmd>BufferLinePick<CR>
+nnoremap bh <cmd>BufferLineCyclePrev<CR>
+nnoremap bl <cmd>BufferLineCycleNext<CR>
+nnoremap btd <cmd>BufferLineGroupToggle Docs<CR>
+
 " Telescope git stuff
 nnoremap <leader>gc <cmd>Telescope git_commits<CR>
 nnoremap <leader>gb <cmd>Telescope git_branches<CR>
@@ -134,7 +138,6 @@ nnoremap <leader>o :SymbolsOutline<CR>
 vnoremap K :m '<-2<CR>gv=gv
 vnoremap J :m '>+1<CR>gv=gv
 
-
 " Session
 nmap <Leader>ss :<C-u>SessionSave<CR>
 nmap <Leader>sl :<C-u>SessionLoad<CR>
@@ -148,13 +151,9 @@ set shortmess+=c
 " vnoremap <leader>p "_dP
 vnoremap <leader>y "+y
 
-" Prettier
-" command! -nargs=0 Prettier :CocCommand prettier.formatFile
-
 " Copilot remap
 imap <silent><script><expr> <C-a> copilot#Accept("\<CR>")
 let g:copilot_no_tab_map = v:true
-
 
 " Autoformat
 autocmd BufWritePre *.js lua vim.lsp.buf.formatting_sync(nil, 1000)
@@ -163,7 +162,6 @@ autocmd BufWritePre *.tsx lua vim.lsp.buf.formatting_sync(nil, 1000)
 autocmd BufWritePre *.ts lua vim.lsp.buf.formatting_sync(nil, 1000)
 autocmd BufWritePre *.go lua vim.lsp.buf.formatting_sync(nil, 1000)
 autocmd BufWritePre *.html lua vim.lsp.buf.formatting_sync(nil, 1000)
-
 
 
 " Whichkey

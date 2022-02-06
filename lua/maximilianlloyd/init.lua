@@ -1,3 +1,4 @@
+require("plenary.reload").reload_module("maximilianlloyd", true)
 require("maximilianlloyd.telescope")
 require("maximilianlloyd.lsp")
 require("maximilianlloyd.lualine")
