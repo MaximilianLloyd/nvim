@@ -7,7 +7,6 @@ require('telescope').setup{
       prompt_prefix = ' >',
       -- layout_strategy = "vertical",
       file_sorter = require('telescope.sorters').get_fzy_sorter,
-
       file_previewer = require('telescope.previewers').vim_buffer_cat.new,
       grep_previewer = require('telescope.previewers').vim_buffer_vimgrep.new,
       qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
@@ -20,8 +19,13 @@ require('telescope').setup{
         },
     },
   },
+  pickers = {
+      code_action = {
+        theme = "cursor"
+      }
+  },
   extensions = {
-    fzy_native = { 
+    fzy_native = {
         override_generic_sorter = false,
         override_file_sorter = true
     },

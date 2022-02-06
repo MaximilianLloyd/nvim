@@ -1,6 +1,7 @@
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
+
 local luasnip = require('luasnip')
 
 luasnip.filetype_extend("javascript", { "javascriptreact" })
@@ -44,12 +45,7 @@ cmp.setup {
     formatting = {
         format = lspkind.cmp_format {
             with_text = true,
-            menu = {
-	            buffer = "[Buffer]",
-	            nvim_lsp = "[LSP]",
-	            path = "[Path]",
-                luasnip = "[Snippet]",
-            },
+            menu = source_mapping,
         },
     },
 	sources = {
@@ -95,13 +91,9 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  -- buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  buf_set_keymap('n', '<space>ca', '<cmd>Telescope lsp_code_actions<CR>', opts)
   buf_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
-
-  -- Learn what this does
-  -- buf_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
-  -- buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
-
 end
 
 
@@ -129,20 +121,32 @@ lspconfig.gopls.setup {
     },
     on_attach = on_attach,
 }
+
 lspconfig.jsonls.setup(config())
 lspconfig.eslint.setup(config())
-lspconfig.html.setup(config())
-lspconfig.cssmodules_ls.setup(config())
-
+lspconfig.angularls.setup(config())
+lspconfig.vimls.setup(config())
+lspconfig.sumneko_lua.setup{
+    settings = {
+    Lua = {
+      diagnostics = {
+        globals = {'vim'},
+      },
+      workspace = {
+        library = vim.api.nvim_get_runtime_file("", true),
+      },
+      telemetry = {
+        enable = false,
+      },
+    },
+    on_attach = on_attach
+  },
+}
 
 local opts = {
 	highlight_hovered_item = true,
 	show_guides = true,
 }
 
--- require("symbols-outline").setup(opts)
 require("symbols-outline").setup(opts)
 require("luasnip/loaders/from_vscode").load()
-
--- Shows diagnostics in a floating window.
--- vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
