@@ -55,7 +55,7 @@ cmp.setup {
     }
 }
 
- -- Cmnd line stuff 
+ -- Cmnd line stuff
 cmp.setup.cmdline(':', {
     sources = {
         { name = "cmndline" }
@@ -69,7 +69,7 @@ cmp.setup.cmdline('/', {
 
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+  local function buf_set_ontion(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
   -- Mappings.
   local opts = { noremap=true, silent=false }
@@ -83,7 +83,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<leader>dh', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', '<leader>dl', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  buf_set_keymap('n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', '<leader>ca', '<cmd>Telescope lsp_code_actions<CR>', opts)
   buf_set_keymap('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
@@ -105,13 +105,14 @@ local servers = {
 -- Loop through the servers listed above.
 for _, server_name in pairs(servers) do
     local server_available, server = lsp_installer_servers.get_server(server_name)
+
     if server_available then
         server:on_ready(function ()
             local opts = {
                 settings = {
                     on_attach = on_attach,
                     capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-                }
+                },
             }
 
             if server_name == "sumneko_lua" then
@@ -136,6 +137,7 @@ for _, server_name in pairs(servers) do
 
             server:setup(opts)
         end)
+
         if not server:is_installed() then
             -- Queue the server to be installed.
             server:install()

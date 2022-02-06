@@ -4,6 +4,9 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'akinsho/bufferline.nvim'
 Plug 'ggandor/lightspeed.nvim'
+Plug 'sindrets/diffview.nvim'
+
+Plug 'NLKNguyen/papercolor-theme'
 
 " Session
 " Plug 'rmagatti/auto-session'
@@ -87,9 +90,19 @@ set termguicolors
 let g:gruvbox_contrast_dark='hard'
 let g:gruvbox_transparent_bg=1
 
+let g:PaperColor_Theme_Options = {
+  \   'theme': {
+  \     'default': {
+  \       'transparent_background': 1
+  \     }
+  \   }
+  \ }
+
+
 " Whichkey
-let ayucolor="dark"
-colorscheme ayu
+" let ayucolor="dark"
+set background=dark
+colorscheme PaperColor
 
 " Transparency
 hi normal guibg=000000

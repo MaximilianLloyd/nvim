@@ -5,6 +5,7 @@ require("maximilianlloyd.lualine")
 require("maximilianlloyd.dashboard-nvim")
 require("maximilianlloyd.which-key")
 require("maximilianlloyd.bufferline")
+require("maximilianlloyd.diffview")
 -- require("maximilianlloyd.auto-session")
 
 vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"

@@ -5,7 +5,7 @@ require("bufferline").setup{
         -- indicator_icon          = "▼",
         show_close_icon         = false,
         show_buffer_close_icons = false,
-        separator_style         = "slant",
+        -- separator_style         = "thin",
         modified_icon           = "ﱳ",
         diagnostics = "nvim_lsp",
         diagnostics_indicator = function(count, level, diagnostics_dict, context)
