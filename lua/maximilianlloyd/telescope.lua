@@ -1,7 +1,8 @@
+local telescope = require('telescope')
 local actions = require('telescope.actions')
 local fb_actions = require "telescope".extensions.file_browser.actions
 
-require('telescope').setup{
+telescope.setup{
   defaults = {
       color_devicons = true,
       prompt_prefix = ' >',
@@ -45,5 +46,6 @@ require('telescope').setup{
 }
 
 
-require('telescope').load_extension('fzy_native')
-require('telescope').load_extension('file_browser')
+telescope.load_extension('fzy_native')
+telescope.load_extension('file_browser')
+telescope.load_extension('harpoon')

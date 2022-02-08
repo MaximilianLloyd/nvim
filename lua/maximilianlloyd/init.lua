@@ -1,11 +1,13 @@
 require("plenary.reload").reload_module("maximilianlloyd", true)
 require("maximilianlloyd.telescope")
 require("maximilianlloyd.lsp")
-require("maximilianlloyd.lualine")
+-- require("maximilianlloyd.lualine")
+require("maximilianlloyd.lualine-bubbles")
 require("maximilianlloyd.dashboard-nvim")
 require("maximilianlloyd.which-key")
 require("maximilianlloyd.bufferline")
 require("maximilianlloyd.diffview")
+require("maximilianlloyd.harpoon")
 -- require("maximilianlloyd.auto-session")
 
 vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"

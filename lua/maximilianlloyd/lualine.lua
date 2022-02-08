@@ -6,7 +6,9 @@ local lualine = require('lualine')
 -- Color table for highlights
 -- stylua: ignore
 local colors = {
-  bg       = '#202328',
+  bg       = '#000000',
+  -- bg       = '#202328',
+  -- fg       = '#bbc2cf',
   fg       = '#bbc2cf',
   yellow   = '#ECBE7B',
   cyan     = '#008080',
@@ -36,7 +38,7 @@ local conditions = {
 -- Config
 local config = {
   options = {
-    -- Disable sections and component separators
+    -- theme =  "molokai",
     component_separators = '',
     section_separators = '',
     theme = {
@@ -175,18 +177,10 @@ ins_left({
   color = { fg = '#ffffff', gui = 'bold' },
 })
 
--- Add components to right sections
-ins_right({
-  'o:encoding', -- option component same as &encoding in viml
-  fmt = string.upper, -- I'm not sure why it's upper case either ;)
-  cond = conditions.hide_in_width,
-  color = { fg = colors.green, gui = 'bold' },
-})
-
 ins_right({
   'fileformat',
   fmt = string.upper,
-  icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
+  icons_enabled = true, -- I think icons are cool but Eviline doesn't have them. sigh
   color = { fg = colors.green, gui = 'bold' },
 })
 

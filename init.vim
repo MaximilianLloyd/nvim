@@ -5,6 +5,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'akinsho/bufferline.nvim'
 Plug 'ggandor/lightspeed.nvim'
 Plug 'sindrets/diffview.nvim'
+Plug 'ThePrimeagen/harpoon'
 
 Plug 'NLKNguyen/papercolor-theme'
 
@@ -54,6 +55,9 @@ Plug 'rafamadriz/friendly-snippets'
 Plug 'ayu-theme/ayu-vim'
 Plug 'gruvbox-community/gruvbox'
 Plug 'marko-cerovac/material.nvim' 
+Plug 'AlessandroYorba/Sierra'
+Plug 'sjl/badwolf'
+Plug 'tomasr/molokai'
 
 " Dashboard
 Plug 'glepnir/dashboard-nvim'
@@ -84,7 +88,6 @@ set nowrap
 
 " Extra column on the left for linting
 set signcolumn=yes
-
 set termguicolors
 
 let g:gruvbox_contrast_dark='hard'
@@ -102,7 +105,8 @@ let g:PaperColor_Theme_Options = {
 " Whichkey
 " let ayucolor="dark"
 set background=dark
-colorscheme PaperColor
+" let g:sierra_Pitch = 1
+colorscheme molokai
 
 " Transparency
 hi normal guibg=000000
@@ -133,6 +137,7 @@ nnoremap btd <cmd>BufferLineGroupToggle Docs<CR>
 " Telescope git stuff
 nnoremap <leader>gc <cmd>Telescope git_commits<CR>
 nnoremap <leader>gb <cmd>Telescope git_branches<CR>
+nnoremap <leader>gd <cmd>DiffviewOpen<CR>
 
 " Grep
 nnoremap <leader>fr :lua require('telescope.builtin').lsp_references()<CR>
@@ -146,6 +151,10 @@ nnoremap <C-x> :cclose<CR>
 
 " Symbols outline
 nnoremap <leader>o :SymbolsOutline<CR>
+
+
+nnoremap <leader>ha :lua require('harpoon.mark').add_file()<CR>
+nnoremap <C-m> <cmd>Telescope harpoon marks<CR>
 
 " move code
 vnoremap K :m '<-2<CR>gv=gv
@@ -177,7 +186,6 @@ autocmd BufWritePre *.go lua vim.lsp.buf.formatting_sync(nil, 1000)
 autocmd BufWritePre *.html lua vim.lsp.buf.formatting_sync(nil, 1000)
 
 
-" Whichkey
 lua require("maximilianlloyd")
 
 hi WhichKeyFloat ctermbg=BLACK ctermfg=BLACK

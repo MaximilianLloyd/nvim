@@ -5,8 +5,7 @@ require("bufferline").setup{
         -- indicator_icon          = "▼",
         show_close_icon         = false,
         show_buffer_close_icons = false,
-        -- separator_style         = "thin",
-        modified_icon           = "ﱳ",
+        separator_style         = "thin",
         diagnostics = "nvim_lsp",
         diagnostics_indicator = function(count, level, diagnostics_dict, context)
           local icon = level:match("error") and " " or " "
