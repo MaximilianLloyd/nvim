@@ -1,7 +1,6 @@
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-
 local luasnip = require('luasnip')
 
 luasnip.filetype_extend("javascript", { "javascriptreact" })
@@ -100,7 +99,8 @@ local servers = {
     "sumneko_lua",
     "tsserver",
     "gopls",
-    "html"
+    "html",
+    "bashls",
 }
 
 -- Loop through the servers listed above.
@@ -149,5 +149,5 @@ local opts = {
 	show_guides = true,
 }
 
-require("symbols-outline").setup(opts)
+-- require("symbols-outline").setup(opts)
 require("luasnip/loaders/from_vscode").load()

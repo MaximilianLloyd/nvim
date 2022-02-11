@@ -17,7 +17,7 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'nvim-telescope/telescope-file-browser.nvim'
 
-Plug 'tpope/vim-surround'
+" Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 
@@ -44,7 +44,6 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 
 Plug 'onsails/lspkind-nvim', { 'commit': '06872e887e7e4579765cc51fa6b0e7643b4284fa' }
-Plug 'simrat39/symbols-outline.nvim'
 Plug 'saadparwaiz1/cmp_luasnip'
 
 " Snippets 
@@ -64,6 +63,8 @@ Plug 'glepnir/dashboard-nvim'
 Plug 'folke/which-key.nvim'
 call plug#end()
 
+let loaded_matchparen = 1
+let g:loaded_matchparen = 1
 set timeoutlen=500
 set ttimeoutlen=50
 set scrolloff=8
@@ -101,7 +102,6 @@ let g:PaperColor_Theme_Options = {
   \   }
   \ }
 
-
 " Whichkey
 " let ayucolor="dark"
 set background=dark
@@ -113,7 +113,12 @@ hi normal guibg=000000
 highlight clear SignColumn
 hi LineNrAbove guifg=#CCCCCC ctermfg=white
 hi LineNrBelow guifg=#CCCCCC ctermfg=white
-set fillchars=""
+" set fillchars=""
+set fillchars=stl:\ ,stlnc:\ ,vert:\ ,fold:-,diff:-
+
+highlight ColorColumn term=reverse ctermbg=0 guibg=#081c23
+highlight VertSplit guibg=000000 guifg=Black ctermbg=6 ctermfg=0
+
 
 let mapleader = " " 
 nnoremap <leader>vv :Vex<CR>
@@ -190,3 +195,4 @@ lua require("maximilianlloyd")
 
 hi WhichKeyFloat ctermbg=BLACK ctermfg=BLACK
 autocmd ColorScheme * highlight WhichKeyFloat ctermbg=NONE ctermfg=NONE
+
