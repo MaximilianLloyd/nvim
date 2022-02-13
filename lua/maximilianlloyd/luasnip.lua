@@ -52,12 +52,11 @@ vim.keymap.set("n", "<leader><leader>s", "<cmd>source ~/.config/nvim/lua/maximil
 
 ls.snippets = {
     all = {
-        ls.parser.parse_snippet("gls", "this is what was expanded")
+        ls.parser.parse_snippet("gls", "LET'S FUCKING GOOOOOOO")
     },
     lua = {
         ls.parser.parse_snippet("lf", "local $1 = function($2)\n  $0\nend"),
         s("req", fmt("local {} = require('{}')", { i(1, "default"), rep(1) }))
-    }
+    },
 }
-
 

@@ -85,7 +85,9 @@ set undodir=~/.vim/undodir
 set undofile
 set incsearch
 set noshowmode
-set nowrap
+" set nowrap
+
+set wrap
 
 " Extra column on the left for linting
 set signcolumn=yes
@@ -103,10 +105,10 @@ let g:PaperColor_Theme_Options = {
   \ }
 
 " Whichkey
-" let ayucolor="dark"
+let ayucolor="dark"
 set background=dark
 " let g:sierra_Pitch = 1
-colorscheme molokai
+colorscheme ayu
 
 " Transparency
 hi normal guibg=000000

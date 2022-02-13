@@ -100,8 +100,7 @@ local servers = {
     "tsserver",
     "gopls",
     "html",
-    "bashls",
-}
+    "bashls", }
 
 -- Loop through the servers listed above.
 for _, server_name in pairs(servers) do
@@ -131,6 +130,16 @@ for _, server_name in pairs(servers) do
                         on_attach = on_attach,
                         capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
                     },
+                }
+            end
+
+            if server_name == "gopls"  then
+                opts = {
+                    settings = {
+                        cmd = { "gopls" },
+                        on_attach = on_attach,
+                        capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+                    }
                 }
             end
 

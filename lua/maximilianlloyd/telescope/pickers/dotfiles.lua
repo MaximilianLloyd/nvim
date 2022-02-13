@@ -9,7 +9,6 @@ local conf = require("telescope.config").values
 
 local colors = function(opts)
   opts = opts or {}
-
   pickers.new(opts, {
     prompt_title = "Dotfiles",
     previewer = previewers.cat,
@@ -43,9 +42,7 @@ local colors = function(opts)
 end
 -- to execute the function
 -- colors(require("telescope.themes").get_dropdown{})
---
---
-local function searchDotfiles()
+function SearchDotfiles()
     builtin.find_files({
         prompt_title = "Dotfiles",
         theme = themes.get_dropdown{},
@@ -54,4 +51,4 @@ local function searchDotfiles()
     })
 end
 
-vim.keymap.set("n", "<leader><leader>d", searchDotfiles, { silent = true });
+vim.keymap.set("n", "<leader><leader>d", SearchDotfiles, { silent = true });
