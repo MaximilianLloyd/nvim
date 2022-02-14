@@ -114,29 +114,13 @@ for _, server_name in pairs(servers) do
             }
 
             if server_name == "sumneko_lua" then
-                opts = {
-                    settings = {
-                        Lua = {
-                            diagnostics = {
-                                globals = {'vim'},
-                            },
-                            workspace = {
-                                library = vim.api.nvim_get_runtime_file("", true),
-                            },
-                            telemetry = {
-                                enable = false,
-                            },
-                        },
-                        on_attach = on_attach,
-                        capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-                    },
-                }
+                opts = require("lua-dev").setup({})
             end
 
             if server_name == "gopls"  then
                 opts = {
                     settings = {
-                        cmd = { "gopls" },
+                        cmd = { "gopls"  },
                         on_attach = on_attach,
                         capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
                     }
@@ -157,6 +141,7 @@ local opts = {
 	highlight_hovered_item = true,
 	show_guides = true,
 }
+
 
 -- require("symbols-outline").setup(opts)
 require("luasnip/loaders/from_vscode").load()

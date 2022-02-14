@@ -6,6 +6,7 @@ Plug 'akinsho/bufferline.nvim'
 Plug 'ggandor/lightspeed.nvim'
 Plug 'sindrets/diffview.nvim'
 Plug 'ThePrimeagen/harpoon'
+Plug 'folke/lua-dev.nvim'
 
 Plug 'NLKNguyen/papercolor-theme'
 
@@ -133,7 +134,6 @@ nnoremap <leader>fg <cmd>Telescope live_grep<CR>
 nnoremap <leader>fh <cmd>Telescope help_tags<CR>
 nnoremap <leader>fb <cmd>Telescope file_browser<CR>
 nnoremap <leader>b <cmd>Telescope buffers<CR>
-
 
 " Bufferline
 nnoremap bb <cmd>BufferLinePick<CR>
