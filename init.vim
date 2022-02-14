@@ -7,6 +7,8 @@ Plug 'ggandor/lightspeed.nvim'
 Plug 'sindrets/diffview.nvim'
 Plug 'ThePrimeagen/harpoon'
 Plug 'folke/lua-dev.nvim'
+Plug 'folke/tokyonight.nvim'
+Plug 'andweeb/presence.nvim'
 
 Plug 'NLKNguyen/papercolor-theme'
 
@@ -106,10 +108,11 @@ let g:PaperColor_Theme_Options = {
   \ }
 
 " Whichkey
-let ayucolor="dark"
+" let g:tokyonight_style = "night"
+" let ayucolor="dark"
 set background=dark
 " let g:sierra_Pitch = 1
-colorscheme ayu
+colorscheme gruvbox
 
 " Transparency
 hi normal guibg=000000
