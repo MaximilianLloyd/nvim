@@ -114,35 +114,13 @@ for _, server_name in pairs(servers) do
             }
 
             if server_name == "sumneko_lua" then
-                opts = {
-                    settings = {
-                        Lua = {
-                            runtime = {
-				            -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-				                version = "LuaJIT",
-			            	-- Setup your lua path
-				                path = vim.split(package.path, ";"),
-			                },
-                            diagnostics = {
-                                globals = {'vim'},
-                            },
-                            workspace = {
-                                library = {
-					                [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-					                [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-			                	},
-                            },
-                        },
-                        on_attach = on_attach,
-                        capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-                    },
-                }
+                opts = require("lua-dev").setup({})
             end
 
             if server_name == "gopls"  then
                 opts = {
                     settings = {
-                        cmd = { "gopls" },
+                        cmd = { "gopls"  },
                         on_attach = on_attach,
                         capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
                     }
@@ -163,6 +141,7 @@ local opts = {
 	highlight_hovered_item = true,
 	show_guides = true,
 }
+
 
 -- require("symbols-outline").setup(opts)
 require("luasnip/loaders/from_vscode").load()

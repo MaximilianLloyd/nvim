@@ -5,6 +5,9 @@ Plug 'akinsho/bufferline.nvim'
 Plug 'ggandor/lightspeed.nvim'
 Plug 'sindrets/diffview.nvim'
 Plug 'ThePrimeagen/harpoon'
+Plug 'folke/lua-dev.nvim'
+Plug 'folke/tokyonight.nvim'
+Plug 'andweeb/presence.nvim'
 
 Plug 'NLKNguyen/papercolor-theme'
 
@@ -104,10 +107,11 @@ let g:PaperColor_Theme_Options = {
   \ }
 
 " Whichkey
-let ayucolor="dark"
+" let g:tokyonight_style = "night"
+" let ayucolor="dark"
 set background=dark
 " let g:sierra_Pitch = 1
-colorscheme ayu
+colorscheme gruvbox
 
 " Transparency
 hi normal guibg=000000
@@ -132,7 +136,6 @@ nnoremap <leader>fg <cmd>Telescope live_grep<CR>
 nnoremap <leader>fh <cmd>Telescope help_tags<CR>
 nnoremap <leader>fb <cmd>Telescope file_browser<CR>
 nnoremap <leader>b <cmd>Telescope buffers<CR>
-
 
 " Bufferline
 nnoremap bb <cmd>BufferLinePick<CR>
