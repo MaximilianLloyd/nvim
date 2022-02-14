@@ -1,5 +1,4 @@
 call plug#begin('~/.config/nvim/plugged')
-
 Plug 'nvim-lua/plenary.nvim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'akinsho/bufferline.nvim'
@@ -194,6 +193,7 @@ autocmd BufWritePre *.html lua vim.lsp.buf.formatting_sync(nil, 1000)
 
 
 lua require("maximilianlloyd")
+" lua require("mivi")
 
 hi WhichKeyFloat ctermbg=BLACK ctermfg=BLACK
 autocmd ColorScheme * highlight WhichKeyFloat ctermbg=NONE ctermfg=NONE
