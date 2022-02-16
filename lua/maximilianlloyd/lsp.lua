@@ -1,70 +1,8 @@
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-local luasnip = require('luasnip')
-
-luasnip.filetype_extend("javascript", { "javascriptreact" })
-luasnip.filetype_extend("javascript", { "html" })
-luasnip.filetype_extend("typescript", { "typescriptreact" })
-luasnip.filetype_extend("typescriptreact", { "typescriptreact" })
 
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
-
-local cmp = require("cmp")
-local source_mapping = {
-	buffer = "[Buffer]",
-	nvim_lsp = "[LSP]",
-	path = "[Path]",
-    luasnip = "[Snippet]",
-}
-
-local lspkind = require("lspkind")
-
-lspkind.init()
-
-cmp.setup {
-	snippet = {
-		expand = function(args)
-			require("luasnip").lsp_expand(args.body)
-		end
-	},
-    mapping = {
-      ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-      ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-      ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-      ['<C-e>'] = cmp.mapping({
-        i = cmp.mapping.abort(),
-        c = cmp.mapping.close(),
-      }),
-      ['<C-y>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-    },
-    formatting = {
-        format = lspkind.cmp_format {
-            with_text = true,
-            menu = source_mapping,
-        },
-    },
-	sources = {
-		{ name = "nvim_lsp" },
-		{ name = "luasnip" },
-		{ name = "buffer", keyword_length = 5 },
-	},
-    experimental = {
-        native_menu = false,
-    }
-}
-
- -- Cmnd line stuff
-cmp.setup.cmdline(':', {
-    sources = {
-        { name = "cmndline" }
-    } })
-
-cmp.setup.cmdline('/', {
-  sources = {
-    { name = 'buffer' }
-  }
-})
 
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -114,7 +52,9 @@ for _, server_name in pairs(servers) do
             }
 
             if server_name == "sumneko_lua" then
-                opts = require("lua-dev").setup({})
+                opts = require("lua-dev").setup({
+                        on_attach = on_attach
+                    })
             end
 
             if server_name == "gopls"  then
@@ -136,12 +76,6 @@ for _, server_name in pairs(servers) do
         end
     end
 end
-
-local opts = {
-	highlight_hovered_item = true,
-	show_guides = true,
-}
-
 
 -- require("symbols-outline").setup(opts)
 require("luasnip/loaders/from_vscode").load()

@@ -28,7 +28,6 @@ Plug 'nvim-lualine/lualine.nvim'
 
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'github/copilot.vim' 
-Plug 'sheerun/vim-polyglot'
 Plug 'rust-lang/rust.vim'
 Plug 'ryanoasis/vim-devicons'
 
@@ -64,6 +63,8 @@ Plug 'tomasr/molokai'
 " Dashboard
 Plug 'glepnir/dashboard-nvim'
 Plug 'folke/which-key.nvim'
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'p00f/nvim-ts-rainbow'
 call plug#end()
 
 let loaded_matchparen = 1
@@ -88,30 +89,18 @@ set undodir=~/.vim/undodir
 set undofile
 set incsearch
 set noshowmode
-" set nowrap
-
-set wrap
+set nowrap
 
 " Extra column on the left for linting
 set signcolumn=yes
-set termguicolors
 
-let g:gruvbox_contrast_dark='hard'
 let g:gruvbox_transparent_bg=1
+let g:gruvbox_contrast_dark = 'hard'
+if exists('+termguicolors')
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
 
-let g:PaperColor_Theme_Options = {
-  \   'theme': {
-  \     'default': {
-  \       'transparent_background': 1
-  \     }
-  \   }
-  \ }
-
-" Whichkey
-" let g:tokyonight_style = "night"
-" let ayucolor="dark"
-set background=dark
-" let g:sierra_Pitch = 1
 colorscheme gruvbox
 
 " Transparency
@@ -196,8 +185,7 @@ autocmd BufWritePre *.go lua vim.lsp.buf.formatting_sync(nil, 1000)
 autocmd BufWritePre *.html lua vim.lsp.buf.formatting_sync(nil, 1000)
 
 
-lua require("maximilianlloyd")
-
 hi WhichKeyFloat ctermbg=BLACK ctermfg=BLACK
 autocmd ColorScheme * highlight WhichKeyFloat ctermbg=NONE ctermfg=NONE
 
+lua require("maximilianlloyd")
