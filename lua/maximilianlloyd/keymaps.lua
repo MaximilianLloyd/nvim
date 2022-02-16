@@ -16,12 +16,11 @@ map("n", "<C-Right>", "<cmd>vertical resize +2<CR>", silentOptions)
 
 map("n", "<C-p>", tspbuiltin.git_files, silentOptions)
 map("n", "<leader>b", tspbuiltin.buffers, silentOptions)
-
 map("n", "<leader>gc", tspbuiltin.git_branches, silentOptions)
-
 map("n", "<leader>fr", tspbuiltin.lsp_references, silentOptions)
 map("n", "<leader>fg", tspbuiltin.live_grep, silentOptions)
 map("n", "<leader>fb", file_browser, silentOptions)
+map("n", "<leader>ts", tspbuiltin.treesitter, silentOptions)
 
 map("n", "<leader>gd", "<cmd>DiffviewOpen<CR>", silentOptions)
 
@@ -32,8 +31,17 @@ map("n", "<leader><CR>", "<cmd>source ~/.config/nvim/init.lua<CR>",{ noremap = t
 
 map("n", "<leader>ff", vim.lsp.buf.formatting, silentOptions) 
 
-map("i", "<C-a>", 'copilot#Accept()', { expr = true, noremap = true, silent = true })
+map("i", "<C-a>", "copilot#Accept()", { expr = true, noremap = true, silent = true })
 
+map("n", "<leader>ss", "<cmd>SessionSave<CR>", silentOptions) 
+map("n", "<leader>q", "<cmd>copen<CR>", silentOptions)
+
+
+map("n", "<leader>q", "<cmd>copen<CR>", silentOptions)
+map("n", "<C-h>", "<cmd>cprev<CR>", silentOptions)
+map("n", "<C-l>", "<cmd>cnext<CR>", silentOptions)
+
+map("n", "<leader>tt", "<cmd>NvimTreeToggle<CR>", silentOptions)
 
 -- Add two numbers together
 

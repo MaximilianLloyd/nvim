@@ -1,4 +1,9 @@
-local telescope = require('telescope')
+local status_ok, telescope = pcall(require, "telescope")
+if not status_ok then
+  print("Error with telescope")
+  return
+end
+
 local actions = require('telescope.actions')
 local fb_actions = require "telescope".extensions.file_browser.actions
 

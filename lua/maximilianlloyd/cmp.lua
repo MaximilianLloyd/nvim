@@ -4,7 +4,6 @@ local source_mapping = {
 	buffer = "[Buffer]",
 	path = "[Path]",
     luasnip = "[Snippet]",
-    cmdline = "[CMD]",
     emoji = "[Emoji]",
 }
 
@@ -12,7 +11,6 @@ local lspkind = require("lspkind")
 local luasnip = require("luasnip")
 
 lspkind.init()
-
 
 local check_backspace = function()
   local col = vim.fn.col "." - 1
@@ -37,6 +35,22 @@ cmp.setup {
         }),
         ["<C-y>"] = cmp.config.disable,
         ["<CR>"] = cmp.mapping.confirm { select = true },
+        ["<Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                cmp.select_next_item()
+            elseif luasnip.expandable() then
+                luasnip.expand()
+            elseif luasnip.expand_or_jumpable() then
+                luasnip.expand_or_jump()
+            elseif check_backspace() then
+                fallback()
+            else
+                fallback()
+            end
+        end, {
+            "i",
+            "s",
+        }),
         ["<S-Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_prev_item()
@@ -61,7 +75,7 @@ cmp.setup {
 		{ name = "luasnip" },
 		{ name = "buffer", keyword_length = 5 },
 		{ name = "path" },
-		{ name = "cmdline" },
+		{ name = "emoji" },
 	},
     confirm_opts = {
         behavior = cmp.ConfirmBehavior.Replace,
@@ -75,3 +89,17 @@ cmp.setup {
         native_menu = false,
     }
 }
+
+
+require'cmp'.setup.cmdline(':', {
+  sources = {
+    { name = 'cmdline' }
+  }
+})
+
+
+require'cmp'.setup.cmdline('/', {
+  sources = {
+    { name = 'buffer' }
+  }
+})

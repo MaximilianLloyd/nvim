@@ -62,8 +62,12 @@ return packer.startup(function(use)
 
 	use 'tpope/vim-commentary'
 	use 'tpope/vim-fugitive'
-	use 'nvim-lualine/lualine.nvim'
+
+	use { 'nvim-lualine/lualine.nvim',
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    }
 	use 'kyazdani42/nvim-web-devicons'
+
 	use 'github/copilot.vim'
 	use 'rust-lang/rust.vim'
 	use 'ryanoasis/vim-devicons'
@@ -99,6 +103,13 @@ return packer.startup(function(use)
         'p00f/nvim-ts-rainbow',
         'nvim-treesitter/nvim-treesitter-angular'
     }}
+
+    use {
+    'kyazdani42/nvim-tree.lua',
+        requires = {
+        'kyazdani42/nvim-web-devicons', -- optional, for file icon
+        },
+    }
   if PACKER_BOOTSTRAP then
     require("packer").sync()
   end

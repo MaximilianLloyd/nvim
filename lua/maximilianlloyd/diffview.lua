@@ -9,7 +9,7 @@ require'diffview'.setup {
     folder_open = "",
   },
   signs = {
-    fold_closed = "",
+    fold_closed = ">",
     fold_open = "",
   },
   file_panel = {

@@ -5,6 +5,7 @@ require("maximilianlloyd.colorscheme")
 require("maximilianlloyd.keymaps")
 require("maximilianlloyd.autocommands")
 require("maximilianlloyd.lsp")
+require("maximilianlloyd.telescope")
 require("maximilianlloyd.cmp")
 require("maximilianlloyd.treesitter")
 require("maximilianlloyd.lualine-mine")
@@ -14,7 +15,7 @@ require("maximilianlloyd.bufferline")
 require("maximilianlloyd.diffview")
 require("maximilianlloyd.luasnip")
 require("maximilianlloyd.discord")
-require("maximilianlloyd.telescope")
+require("maximilianlloyd.luatree")
 
 vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
 
