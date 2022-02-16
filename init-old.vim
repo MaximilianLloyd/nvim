@@ -183,9 +183,8 @@ autocmd BufWritePre *.ts lua vim.lsp.buf.formatting_sync(nil, 1000)
 autocmd BufWritePre *.go lua vim.lsp.buf.formatting_sync(nil, 1000)
 autocmd BufWritePre *.html lua vim.lsp.buf.formatting_sync(nil, 1000)
 
-
 hi WhichKeyFloat ctermbg=BLACK ctermfg=BLACK
 autocmd ColorScheme * highlight WhichKeyFloat ctermbg=NONE ctermfg=NONE
 
 lua require("maximilianlloyd")
-lua require("mivi")
+" lua require("mivi")
