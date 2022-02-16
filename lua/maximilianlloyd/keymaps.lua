@@ -29,11 +29,11 @@ map("i", "<C-s>", "<ESC> :update<CR>", silentOptions)
 
 map("n", "<leader><CR>", "<cmd>source ~/.config/nvim/init.lua<CR>",{ noremap = true, silent = false })
 
-map("n", "<leader>ff", vim.lsp.buf.formatting, silentOptions) 
+map("n", "<leader>ff", vim.lsp.buf.formatting, silentOptions)
 
 map("i", "<C-a>", "copilot#Accept()", { expr = true, noremap = true, silent = true })
 
-map("n", "<leader>ss", "<cmd>SessionSave<CR>", silentOptions) 
+map("n", "<leader>ss", "<cmd>SessionSave<CR>", silentOptions)
 map("n", "<leader>q", "<cmd>copen<CR>", silentOptions)
 
 
