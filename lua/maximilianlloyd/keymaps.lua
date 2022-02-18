@@ -21,6 +21,7 @@ map("n", "<leader>fr", tspbuiltin.lsp_references, silentOptions)
 map("n", "<leader>fg", tspbuiltin.live_grep, silentOptions)
 map("n", "<leader>fb", file_browser, silentOptions)
 map("n", "<leader>ts", tspbuiltin.treesitter, silentOptions)
+map("n", "<leader>ht", tspbuiltin.help_tags, silentOptions)
 
 map("n", "<leader>gd", "<cmd>DiffviewOpen<CR>", silentOptions)
 
@@ -42,6 +43,7 @@ map("n", "<C-h>", "<cmd>cprev<CR>", silentOptions)
 map("n", "<C-l>", "<cmd>cnext<CR>", silentOptions)
 
 map("n", "<leader>tt", "<cmd>NvimTreeToggle<CR>", silentOptions)
+map("n", "<leader>tf", "<cmd>NvimTreeToggle<CR>", silentOptions)
 
 -- Add two numbers together
 

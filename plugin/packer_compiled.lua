@@ -184,6 +184,11 @@ _G.packer_plugins = {
     path = "/home/max/.local/share/nvim/site/pack/packer/start/material.nvim",
     url = "https://github.com/marko-cerovac/material.nvim"
   },
+  ["mivi.nvim"] = {
+    loaded = true,
+    path = "/home/max/.local/share/nvim/site/pack/packer/start/mivi.nvim",
+    url = "/home/max/Development/Plugins/mivi.nvim"
+  },
   molokai = {
     loaded = true,
     path = "/home/max/.local/share/nvim/site/pack/packer/start/molokai",
