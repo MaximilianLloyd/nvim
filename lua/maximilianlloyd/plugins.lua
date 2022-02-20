@@ -110,7 +110,7 @@ return packer.startup(function(use)
         'kyazdani42/nvim-web-devicons', -- optional, for file icon
         },
     }
-    use "/home/max/Development/Plugins/mivi.nvim"
+    use "/Users/maximilianlloyd/development/Plugins/mivi.nvim"
   if PACKER_BOOTSTRAP then
     require("packer").sync()
   end

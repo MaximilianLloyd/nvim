@@ -45,6 +45,7 @@ map("n", "<C-l>", "<cmd>cnext<CR>", silentOptions)
 map("n", "<leader>tt", "<cmd>NvimTreeToggle<CR>", silentOptions)
 map("n", "<leader>tf", "<cmd>NvimTreeToggle<CR>", silentOptions)
 
+map("v", "<leader>y", '"+y', { silent = false })
 -- Add two numbers together
 
 
