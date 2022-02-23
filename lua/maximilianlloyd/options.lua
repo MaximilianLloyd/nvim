@@ -15,14 +15,13 @@ local options = {
 	errorbells=false,
 	swapfile=false,
 	backup=false,
-	undodir="~/.vim/undodir",
-	wrap=false, 
+	undodir="/home/max/.vim/undodir",
+	wrap=false,
 	undofile=true,
 	signcolumn="yes",
 	incsearch=true,
 	showmode=true,
 }
-
 
 vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
 vim.opt.shortmess:append "c"

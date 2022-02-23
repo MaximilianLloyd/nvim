@@ -37,7 +37,7 @@ local servers = {
     "sumneko_lua",
     "tsserver",
     "gopls",
-    "html",
+    -- "html",
     "bashls", }
 
 -- Loop through the servers listed above.
