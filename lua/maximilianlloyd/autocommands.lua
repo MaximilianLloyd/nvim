@@ -1,11 +1,18 @@
 vim.cmd[[
   let g:copilot_no_tab_map = v:true
   
-  augroup _auto_resize
-    autocmd!
-    autocmd VimResized * tabdo wincmd = 
-  augroup end
+augroup _auto_resize
+  autocmd!
+  autocmd VimResized * tabdo wincmd = 
+augroup end
+
 ]]
+-- augroup MAX_LSP
+--   autocmd!
+--   autocmd! BufWrite,BufEnter,InsertLeave * :lua vim.diagnostic.setloclist() 
+-- augroup END
+
+
 
 P = function(v)
     print(vim.inspect(v))
@@ -26,3 +33,5 @@ end
   --   autocmd!
   --   autocmd BufWritePre * lua vim.lsp.buf.formatting()
   -- augroup end
+--
+--

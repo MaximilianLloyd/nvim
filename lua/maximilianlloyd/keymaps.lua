@@ -46,6 +46,11 @@ map("n", "<leader>tt", "<cmd>NvimTreeToggle<CR>", silentOptions)
 map("n", "<leader>tf", "<cmd>NvimTreeToggle<CR>", silentOptions)
 
 map("v", "<leader>y", '"+y', { silent = false })
+
+map("n", "<leader>j", "<cmd>lnext<CR>", { silent = false })
+map("n", "<leader>k", "<cmd>lprev<CR>", { silent = false })
+map("n", "<leader>sl", vim.diagnostic.setloclist, { silent = false })
+map("n", "<leader>lq", "<cmd>lclose<CR>", { silent = false })
 -- Add two numbers together
 
 
