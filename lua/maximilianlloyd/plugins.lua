@@ -42,8 +42,6 @@ return packer.startup(function(use)
 	use 'wbthomason/packer.nvim'
 	use 'nvim-lua/plenary.nvim'
 	use 'editorconfig/editorconfig-vim'
-    use 'sbdchd/neoformat'
-    use 'prettier/vim-prettier'
     use 'jose-elias-alvarez/null-ls.nvim'
     -- using packer.nvim
     use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
@@ -63,6 +61,12 @@ return packer.startup(function(use)
         }
     }
 
+    use  {
+        'lewis6991/gitsigns.nvim',
+        requires = {
+            'nvim-lua/plenary.nvim'
+        }
+    }
 	use 'tpope/vim-commentary'
 	use 'tpope/vim-fugitive'
 

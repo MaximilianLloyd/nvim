@@ -1,5 +1,6 @@
 local map = vim.keymap.set
 local tspbuiltin = require "telescope.builtin"
+local gitsigns = require "gitsigns"
 local file_browser = require "telescope".extensions.file_browser.file_browser
 local silentOptions = { noremap = true, silent = true }
 
@@ -16,7 +17,6 @@ map("n", "<C-Right>", "<cmd>vertical resize +2<CR>", silentOptions)
 
 map("n", "<C-p>", tspbuiltin.git_files, silentOptions)
 map("n", "<leader>b", tspbuiltin.buffers, silentOptions)
-map("n", "<leader>gc", tspbuiltin.git_branches, silentOptions)
 map("n", "<leader>fr", tspbuiltin.lsp_references, silentOptions)
 map("n", "<leader>fg", tspbuiltin.live_grep, silentOptions)
 map("n", "<leader>fb", file_browser, silentOptions)
@@ -54,4 +54,8 @@ map("n", "<leader>lq", "<cmd>lclose<CR>", { silent = false })
 -- Add two numbers together
 
 
-
+-- Git signs
+map("n", "<leader>gc", tspbuiltin.git_branches, silentOptions)
+map("n", "<leader>gtd", gitsigns.toggle_deleted, silentOptions)
+map("n", "<leader>gdt", gitsigns.diffthis, silentOptions)
+map("n", "<leader>gph", gitsigns.toggle_deleted, silentOptions)
