@@ -2,9 +2,16 @@ local macOptions = require("maximilianlloyd.os.mac")
 local linuxOptions = require("maximilianlloyd.os.linux")
 
 local options = {
+    clipboard = "unnamedplus",
+    cmdheight = 2,
+    completeopt = { "menuone", "noselect" },
+    conceallevel = 0,
+    fileencoding = "utf-8",
+    mouse = "a",
 	timeoutlen=500,
 	ttimeoutlen=50,
 	scrolloff=8,
+    sidescrolloff=8,
 	number=true,
 	relativenumber=true,
 	ic=true,
@@ -23,8 +30,13 @@ local options = {
 	signcolumn="yes",
 	incsearch=true,
 	showmode=true,
+    cursorline=true
 }
 
+vim.cmd "set whichwrap+=<,>,[,],h,l"
+vim.cmd [[
+highlight CursorLine ctermfg=White ctermbg=1 cterm=bold
+]]
 vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
 vim.opt.shortmess:append "c"
 
@@ -36,13 +48,12 @@ end
 
 applyOptions(options)
 
-local isMac = vim.fn.has("macunix")
-local isLinux = vim.fn.has("linux")
+local sysname = vim.loop.os_uname().sysname
 
-if (isMac) then
+if (sysname == 'Mac') then
     print("Mac detected")
     applyOptions(macOptions)
-elseif (isLinux) then
+elseif (sysname == 'Linux') then
     print("Linux detected")
     applyOptions(linuxOptions)
 end

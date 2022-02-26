@@ -48,6 +48,7 @@ return packer.startup(function(use)
 	use 'ggandor/lightspeed.nvim'
     use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
 	-- use { 'ThePrimeagen/harpoon', requires = 'nvim-lua/plenary.nvim' }
+    use { 'fatih/vim-go' }
 
 	use 'folke/lua-dev.nvim'
 	use 'andweeb/presence.nvim'
@@ -78,7 +79,6 @@ return packer.startup(function(use)
 	use 'github/copilot.vim'
 	use 'rust-lang/rust.vim'
 	use 'ryanoasis/vim-devicons'
-	use 'fatih/vim-go'
 	use 'neovim/nvim-lspconfig'
 	use 'williamboman/nvim-lsp-installer'
 	use 'hrsh7th/cmp-nvim-lua'
@@ -117,7 +117,7 @@ return packer.startup(function(use)
         'kyazdani42/nvim-web-devicons', -- optional, for file icon
         },
     }
-    use "/Users/maximilianlloyd/development/Plugins/mivi.nvim"
+    -- use "/Users/maximilianlloyd/development/Plugins/mivi.nvim"
   if PACKER_BOOTSTRAP then
     require("packer").sync()
   end

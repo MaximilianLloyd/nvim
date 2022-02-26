@@ -43,9 +43,9 @@ map("n", "<C-h>", "<cmd>cprev<CR>", silentOptions)
 map("n", "<C-l>", "<cmd>cnext<CR>", silentOptions)
 
 map("n", "<leader>tt", "<cmd>NvimTreeToggle<CR>", silentOptions)
-map("n", "<leader>tf", "<cmd>NvimTreeToggle<CR>", silentOptions)
+map("n", "   <leader>tf", "<cmd>NvimTreeToggle<CR>", silentOptions)
 
-map("v", "<leader>y", '"+y', { silent = false })
+map({ "n", "v" }, "<leader>y", '"+y', { silent = false })
 
 map("n", "<leader>j", "<cmd>lnext<CR>", { silent = false })
 map("n", "<leader>k", "<cmd>lprev<CR>", { silent = false })
@@ -53,9 +53,15 @@ map("n", "<leader>sl", vim.diagnostic.setloclist, { silent = false })
 map("n", "<leader>lq", "<cmd>lclose<CR>", { silent = false })
 -- Add two numbers together
 
+map("n", "Y", "y$", { noremap = true, silent = true })
 
 -- Git signs
 map("n", "<leader>gc", tspbuiltin.git_branches, silentOptions)
 map("n", "<leader>gtd", gitsigns.toggle_deleted, silentOptions)
 map("n", "<leader>gdt", gitsigns.diffthis, silentOptions)
-map("n", "<leader>gph", gitsigns.toggle_deleted, silentOptions)
+-- map("n", "<leader>gph", gitsigns.setup, silentOptions)
+--
+map("i", ",", ",<c-g>u", { noremap = true, silent = true })
+map("i", ".", ",<c-g>u", { noremap = true, silent = true })
+map("i", "!", ",<c-g>u", { noremap = true, silent = true })
+map("i", "?", ",<c-g>u", { noremap = true, silent = true })

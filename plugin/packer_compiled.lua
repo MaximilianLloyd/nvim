@@ -154,6 +154,11 @@ _G.packer_plugins = {
     path = "/home/max/.local/share/nvim/site/pack/packer/start/friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
   },
+  ["gitsigns.nvim"] = {
+    loaded = true,
+    path = "/home/max/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
+    url = "https://github.com/lewis6991/gitsigns.nvim"
+  },
   gruvbox = {
     loaded = true,
     path = "/home/max/.local/share/nvim/site/pack/packer/start/gruvbox",
@@ -184,20 +189,10 @@ _G.packer_plugins = {
     path = "/home/max/.local/share/nvim/site/pack/packer/start/material.nvim",
     url = "https://github.com/marko-cerovac/material.nvim"
   },
-  ["mivi.nvim"] = {
-    loaded = true,
-    path = "/home/max/.local/share/nvim/site/pack/packer/start/mivi.nvim",
-    url = "https://github.com//Users/maximilianlloyd/development/Plugins/mivi.nvim"
-  },
   molokai = {
     loaded = true,
     path = "/home/max/.local/share/nvim/site/pack/packer/start/molokai",
     url = "https://github.com/tomasr/molokai"
-  },
-  neoformat = {
-    loaded = true,
-    path = "/home/max/.local/share/nvim/site/pack/packer/start/neoformat",
-    url = "https://github.com/sbdchd/neoformat"
   },
   ["null-ls.nvim"] = {
     loaded = true,
@@ -298,11 +293,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/max/.local/share/nvim/site/pack/packer/start/vim-go",
     url = "https://github.com/fatih/vim-go"
-  },
-  ["vim-prettier"] = {
-    loaded = true,
-    path = "/home/max/.local/share/nvim/site/pack/packer/start/vim-prettier",
-    url = "https://github.com/prettier/vim-prettier"
   },
   ["which-key.nvim"] = {
     loaded = true,
