@@ -43,7 +43,6 @@ return packer.startup(function(use)
 	use 'wbthomason/packer.nvim'
 	use 'nvim-lua/plenary.nvim'
 	use 'editorconfig/editorconfig-vim'
-    use 'jose-elias-alvarez/null-ls.nvim'
     -- using packer.nvim
     use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
 	use 'ggandor/lightspeed.nvim'
@@ -80,9 +79,12 @@ return packer.startup(function(use)
 	use 'github/copilot.vim'
 	use 'rust-lang/rust.vim'
 	use 'ryanoasis/vim-devicons'
+
 	use 'neovim/nvim-lspconfig'
 	use 'williamboman/nvim-lsp-installer'
 	use 'hrsh7th/cmp-nvim-lua'
+    use 'tamago324/nlsp-settings.nvim'
+    use { 'jose-elias-alvarez/null-ls.nvim', requires = { 'tamago324/nlsp-settings.nvim'} }
 
 	use { 'hrsh7th/nvim-cmp', requires = {
         'hrsh7th/cmp-emoji',

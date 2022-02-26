@@ -1,5 +1,6 @@
 local default_schemas = nil
-local status_ok, jsonls_settings = pcall(require, "nlspsettings.jsonls")
+local status_ok, jsonls_settings = pcall(require, "nlspsettings")
+
 if status_ok then
   default_schemas = jsonls_settings.get_default_schemas()
 end
@@ -39,9 +40,7 @@ local schemas = {
     description = "Bucklescript config",
     fileMatch = { "bsconfig.json" },
     url = "https://raw.githubusercontent.com/rescript-lang/rescript-compiler/8.2.0/docs/docson/build-schema.json",
-  },
-  {
-    description = "Prettier config",
+  }, { description = "Prettier config",
     fileMatch = {
       ".prettierrc",
       ".prettierrc.json",

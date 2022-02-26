@@ -199,6 +199,11 @@ _G.packer_plugins = {
     path = "/home/max/.local/share/nvim/site/pack/packer/start/molokai",
     url = "https://github.com/tomasr/molokai"
   },
+  ["nlsp-settings.nvim"] = {
+    loaded = true,
+    path = "/home/max/.local/share/nvim/site/pack/packer/start/nlsp-settings.nvim",
+    url = "https://github.com/tamago324/nlsp-settings.nvim"
+  },
   ["null-ls.nvim"] = {
     loaded = true,
     path = "/home/max/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
