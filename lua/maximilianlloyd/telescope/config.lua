@@ -22,6 +22,10 @@ telescope.setup{
         i = {
             ["<esc>"] = actions.close,
             ["<C-q>"] = actions.send_to_qflist,
+            ["<C-n>"] = actions.cycle_history_next,
+            ["<C-p>"] = actions.cycle_history_prev,
+            ["<C-t>"] = actions.select_tab,
+            ["<CR>"] = actions.select_default
         },
     },
   },

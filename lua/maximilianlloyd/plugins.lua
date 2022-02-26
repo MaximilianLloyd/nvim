@@ -39,6 +39,7 @@ packer.init {
 
 
 return packer.startup(function(use)
+    use 'lewis6991/impatient.nvim'
 	use 'wbthomason/packer.nvim'
 	use 'nvim-lua/plenary.nvim'
 	use 'editorconfig/editorconfig-vim'

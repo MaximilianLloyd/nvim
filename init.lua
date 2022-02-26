@@ -1,3 +1,4 @@
+require("maximilianlloyd.impatient")
 require("plenary.reload").reload_module("maximilianlloyd", true)
 require("maximilianlloyd.plugins")
 require("maximilianlloyd.options")
