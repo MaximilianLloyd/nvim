@@ -1,3 +1,4 @@
+-- "Hello from me!"
 vim.cmd [[
 try
   let g:gruvbox_transparent_bg=1

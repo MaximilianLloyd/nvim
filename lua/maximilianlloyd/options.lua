@@ -30,7 +30,7 @@ local options = {
 	signcolumn="yes",
 	incsearch=true,
 	showmode=true,
-    cursorline=true
+    cursorline=false
 }
 
 vim.cmd "set whichwrap+=<,>,[,],h,l"

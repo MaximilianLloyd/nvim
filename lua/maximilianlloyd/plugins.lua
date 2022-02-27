@@ -52,6 +52,7 @@ return packer.startup(function(use)
 
 	use 'folke/lua-dev.nvim'
 	use 'andweeb/presence.nvim'
+    use 'mfussenegger/nvim-dap'
 
     use {
 	     'nvim-telescope/telescope.nvim',
