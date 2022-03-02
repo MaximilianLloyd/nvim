@@ -43,7 +43,8 @@ map("n", "<C-h>", "<cmd>cprev<CR>", silentOptions)
 map("n", "<C-l>", "<cmd>cnext<CR>", silentOptions)
 
 map("n", "<leader>tt", "<cmd>NvimTreeToggle<CR>", silentOptions)
-map("n", "   <leader>tf", "<cmd>NvimTreeToggle<CR>", silentOptions)
+map("n", "<leader>tf", "<cmd>NvimTreeFindFile<CR>", silentOptions)
+map("n", "<leader>tr", "<cmd>NvimTreeRefresh<CR>", silentOptions)
 
 map({ "n", "v" }, "<leader>y", '"+y', { silent = false })
 

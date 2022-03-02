@@ -36,6 +36,8 @@ local options = {
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd [[
 highlight CursorLine ctermfg=White ctermbg=1 cterm=bold
+let g:neovide_transparency=0.8
+let g:neovide_no_idle=v:true
 ]]
 vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
 vim.opt.shortmess:append "c"
