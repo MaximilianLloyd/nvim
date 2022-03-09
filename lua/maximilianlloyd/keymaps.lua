@@ -22,8 +22,8 @@ map("n", "<leader>fg", tspbuiltin.live_grep, silentOptions)
 map("n", "<leader>fb", file_browser, silentOptions)
 map("n", "<leader>ts", tspbuiltin.treesitter, silentOptions)
 map("n", "<leader>ht", tspbuiltin.help_tags, silentOptions)
-
-map("n", "<leader>gd", "<cmd>DiffviewOpen<CR>", silentOptions)
+map("n", "<leader>m", tspbuiltin.marks, silentOptions)
+map("n", "<leader>hm", "<cmd>Telescope harpoon marks<CR>", silentOptions)
 
 map("n", "<C-s>", "<cmd>update<CR>", silentOptions)
 map("i", "<C-s>", "<ESC> :update<CR>", silentOptions)
@@ -45,6 +45,7 @@ map("n", "<C-l>", "<cmd>cnext<CR>", silentOptions)
 map("n", "<leader>tt", "<cmd>NvimTreeToggle<CR>", silentOptions)
 map("n", "<leader>tf", "<cmd>NvimTreeFindFile<CR>", silentOptions)
 map("n", "<leader>tr", "<cmd>NvimTreeRefresh<CR>", silentOptions)
+map("n", "<leader>tr", "<cmd>tabnew<CR>", silentOptions)
 
 map({ "n", "v" }, "<leader>y", '"+y', { silent = false })
 
@@ -57,15 +58,17 @@ map("n", "<leader>lq", "<cmd>lclose<CR>", { silent = false })
 map("n", "Y", "y$", { noremap = true, silent = true })
 
 -- Git signs
-map("n", "<leader>gc", tspbuiltin.git_branches, silentOptions)
+map("n", "<leader>gsb", tspbuiltin.git_branches, silentOptions)
 map("n", "<leader>gtd", gitsigns.toggle_deleted, silentOptions)
 map("n", "<leader>gdt", gitsigns.diffthis, silentOptions)
+map("n", "<leader>gb", "<cmd>Gitsigns blame_line<CR>", silentOptions)
 
 map("n", "bb", "<cmd>BufferLinePick<CR>", silentOptions)
 map("n", "bh", "<cmd>BufferLineCyclePrev<CR>", silentOptions)
 map("n", "bl", "<cmd>BufferLineCycleNext<CR>", silentOptions)
 -- map("n", "<leader>gph", gitsigns.setup, silentOptions)
 --
+-- Sets new undo mark
 map("i", ",", ",<c-g>u", { noremap = true, silent = true })
 map("i", ".", ".<c-g>u", { noremap = true, silent = true })
 map("i", "!", "!<c-g>u", { noremap = true, silent = true })

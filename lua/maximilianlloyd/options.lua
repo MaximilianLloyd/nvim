@@ -7,7 +7,7 @@ local options = {
     completeopt = { "menuone", "noselect" },
     conceallevel = 0,
     fileencoding = "utf-8",
-    mouse = "a",
+    -- mouse = "a",
 	timeoutlen=500,
 	ttimeoutlen=50,
 	scrolloff=8,
@@ -18,10 +18,12 @@ local options = {
 	hls=false,
 	hidden=true,
 	tabstop=4,
-	softtabstop=4,
-	shiftwidth=4,
-	expandtab=true,
-	smartindent=true,
+	softtabstop=0,
+	shiftwidth=2,
+	expandtab=false,
+    smarttab=true,
+	-- smartindent=false,
+	-- initial: smartindent=true,
 	errorbells=false,
 	swapfile=false,
 	backup=false,
@@ -36,7 +38,7 @@ local options = {
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd [[
 highlight CursorLine ctermfg=White ctermbg=1 cterm=bold
-let g:neovide_transparency=0.8
+let g:neovide_transparency=0.9
 let g:neovide_no_idle=v:true
 ]]
 vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"

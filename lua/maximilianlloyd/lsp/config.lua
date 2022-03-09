@@ -20,6 +20,7 @@ local function lsp_highlight_document(client)
 end
 
 local on_attach = function(client, bufnr)
+    -- This is to disable default formatting, so that null-ls works.
 	if client.name == "tsserver" then
 		client.resolved_capabilities.document_formatting = false
 	end
@@ -27,6 +28,7 @@ local on_attach = function(client, bufnr)
 	local function buf_set_keymap(...)
 		vim.api.nvim_buf_set_keymap(bufnr, ...)
 	end
+
 	local function buf_set_option(...)
 		vim.api.nvim_buf_set_option(bufnr, ...)
 	end
@@ -89,15 +91,11 @@ for _, server_name in pairs(servers) do
 			end
 
 			if server_name == "gopls" then
-				opts = {
-					capabilities = require("cmp_nvim_lsp").update_capabilities(
-						vim.lsp.protocol.make_client_capabilities()
-					),
-					on_attach = on_attach,
+				opts = vim.tbl_deep_extend("force", {
 					settings = {
 						cmd = { "gopls" },
 					},
-				}
+				}, opts)
 			end
 
 			server:setup(opts)

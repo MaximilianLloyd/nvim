@@ -13,11 +13,7 @@ local rep = require("luasnip.extras").rep
 ls.config.set_config {
     history = true,
     updateevents = "TextChanged,TextChangedI",
-
-
     enable_autosnippets = false,
-
-
     ext_opts = {
         [types.choiceNode] = {
             active = {
@@ -59,4 +55,3 @@ ls.snippets = {
         s("req", fmt("local {} = require('{}')", { i(1, "default"), rep(1) }))
     },
 }
-
