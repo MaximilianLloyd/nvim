@@ -2,7 +2,9 @@ local map = vim.keymap.set
 local tspbuiltin = require "telescope.builtin"
 local gitsigns = require "gitsigns"
 local file_browser = require "telescope".extensions.file_browser.file_browser
+local mark = require "harpoon.mark"
 local silentOptions = { noremap = true, silent = true }
+
 
 -- vim.g.mapleader = " "
 
@@ -23,6 +25,8 @@ map("n", "<leader>fb", file_browser, silentOptions)
 map("n", "<leader>ts", tspbuiltin.treesitter, silentOptions)
 map("n", "<leader>ht", tspbuiltin.help_tags, silentOptions)
 map("n", "<leader>m", tspbuiltin.marks, silentOptions)
+
+map("n", "<leader>ha", mark.add_file, silentOptions)
 map("n", "<leader>hm", "<cmd>Telescope harpoon marks<CR>", silentOptions)
 
 map("n", "<C-s>", "<cmd>update<CR>", silentOptions)

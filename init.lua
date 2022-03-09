@@ -9,15 +9,19 @@ require("maximilianlloyd.lsp")
 require("maximilianlloyd.telescope")
 require("maximilianlloyd.cmp")
 require("maximilianlloyd.treesitter")
-require("maximilianlloyd.lualine-mine")
+require("maximilianlloyd.lualine")
 require("maximilianlloyd.dashboard-nvim")
 require("maximilianlloyd.gitsigns")
 require("maximilianlloyd.which-key")
 require("maximilianlloyd.bufferline")
-require("maximilianlloyd.diffview")
+-- require("maximilianlloyd.diffview")
 require("maximilianlloyd.luasnip")
 require("maximilianlloyd.discord")
 require("maximilianlloyd.luatree")
+
+-- Plugins to checkout
+-- https://github.com/ray-x/lsp_signature.nvim
+-- https://github.com/windwp/nvim-autopairs
 
 vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
 
